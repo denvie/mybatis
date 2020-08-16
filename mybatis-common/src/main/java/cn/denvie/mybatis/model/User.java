@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * This class corresponds to the database table user
+ * 用户表
  * 
  * @author denvie
  * @since 2020/8/16

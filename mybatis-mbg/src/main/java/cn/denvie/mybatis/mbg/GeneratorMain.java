@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2020-2020 尛飛俠（Denvie） All rights reserved.
+ */
+
 package cn.denvie.mybatis.mbg;
 
 import org.mybatis.generator.api.MyBatisGenerator;
@@ -18,7 +22,7 @@ import java.util.List;
  * MyBatis代码生成器。
  *
  * @author denvie
- * @date 2020/8/16
+ * @since 2020/8/16
  */
 public class GeneratorMain {
     public static void main(String[] args) throws URISyntaxException, IOException, XMLParserException,

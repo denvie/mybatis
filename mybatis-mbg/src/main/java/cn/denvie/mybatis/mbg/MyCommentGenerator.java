@@ -1,9 +1,12 @@
+/*
+ * Copyright © 2020-2020 尛飛俠（Denvie） All rights reserved.
+ */
+
 package cn.denvie.mybatis.mbg;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.*;
-import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.config.PropertyRegistry;
 import org.mybatis.generator.internal.DefaultCommentGenerator;
 import org.mybatis.generator.internal.util.StringUtility;
@@ -16,11 +19,13 @@ import java.util.Properties;
  * 自定义注释生成器。
  *
  * @author denvie
- * @date 2020/8/16
+ * @since 2020/8/16
  */
 public class MyCommentGenerator extends DefaultCommentGenerator {
     private boolean addRemarkComments = false;
     private SimpleDateFormat dateFormat = null;
+    private String author;
+    private String copyright;
 
     /**
      * 设置用户配置的参数
@@ -30,12 +35,11 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
         super.addConfigurationProperties(properties);
         this.addRemarkComments = StringUtility.isTrue(
                 properties.getProperty(PropertyRegistry.COMMENT_GENERATOR_ADD_REMARK_COMMENTS));
-        String dateFormatString = properties.getProperty(PropertyRegistry.COMMENT_GENERATOR_DATE_FORMAT);
-        if (StringUtility.stringHasValue(dateFormatString)) {
-            dateFormat = new SimpleDateFormat(dateFormatString);
-        } else {
-            dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        }
+        this.dateFormat = new SimpleDateFormat(properties.getProperty(
+                PropertyRegistry.COMMENT_GENERATOR_DATE_FORMAT, "yyyy-MM-dd HH:mm:ss"));
+        this.author = properties.getProperty("author", System.getProperty("user.name"));
+        this.copyright = properties.getProperty("copyright",
+                "Copyright © 2020-2020 尛飛俠（Denvie） All rights reserved.");
     }
 
     /**
@@ -48,7 +52,7 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
         }
         // Java文件头加入版权信息
         compilationUnit.addFileCommentLine("/*");
-        compilationUnit.addFileCommentLine(" * " + "Copyright © 2020-2020 尛飛俠（Denvie） All rights reserved.");
+        compilationUnit.addFileCommentLine(" * " + copyright);
         compilationUnit.addFileCommentLine(" */");
         compilationUnit.addFileCommentLine("");
 
@@ -109,7 +113,7 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
         }
         if (isClass) {
             element.addJavaDocLine(" * ");
-            element.addJavaDocLine(" * @author " + System.getProperty("user.name"));
+            element.addJavaDocLine(" * @author " + author);
             element.addJavaDocLine(" * @since " + dateFormat.format(new Date()));
         }
         element.addJavaDocLine(" */");
@@ -120,6 +124,9 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
      */
     @Override
     public void addGeneralMethodComment(Method method, IntrospectedTable introspectedTable) {
+        if (!addRemarkComments) {
+            return;
+        }
         method.addJavaDocLine("/**");
         method.addJavaDocLine(" * " + method.getName());
         method.addJavaDocLine(" */");

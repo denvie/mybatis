@@ -32,18 +32,16 @@ import java.util.Properties;
 public class MapperGeneratorPlugin extends PluginAdapter {
     private boolean addRemarkComments = false;
     private DateFormat dateFormat = null;
+    private String author;
 
     @Override
     public void setProperties(Properties properties) {
         super.setProperties(properties);
         this.addRemarkComments = StringUtility.isTrue(
                 properties.getProperty(PropertyRegistry.COMMENT_GENERATOR_ADD_REMARK_COMMENTS));
-        String dateFormatString = properties.getProperty(PropertyRegistry.COMMENT_GENERATOR_DATE_FORMAT);
-        if (StringUtility.stringHasValue(dateFormatString)) {
-            dateFormat = new SimpleDateFormat(dateFormatString);
-        } else {
-            dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        }
+        this.dateFormat = new SimpleDateFormat(properties.getProperty(
+                PropertyRegistry.COMMENT_GENERATOR_DATE_FORMAT, "yyyy-MM-dd HH:mm:ss"));
+        this.author = properties.getProperty("author", System.getProperty("user.name"));
     }
 
     @Override
@@ -84,7 +82,7 @@ public class MapperGeneratorPlugin extends PluginAdapter {
         interfaze.addJavaDocLine("/**");
         interfaze.addJavaDocLine(" * " + remarks);
         interfaze.addJavaDocLine(" * ");
-        interfaze.addJavaDocLine(" * @author " + System.getProperty("user.name"));
+        interfaze.addJavaDocLine(" * @author " + author);
         interfaze.addJavaDocLine(" * @since " + dateFormat.format(new Date()));
         interfaze.addJavaDocLine(" */");
     }

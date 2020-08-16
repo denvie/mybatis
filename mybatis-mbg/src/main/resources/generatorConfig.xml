@@ -19,15 +19,18 @@
         <plugin type="cn.denvie.mybatis.mbg.MapperGeneratorPlugin" >
             <property name="addRemarkComments" value="true"/>
             <property name="dateFormat" value="yyyy/M/dd"/>
+            <property name="author" value="denvie"/>
         </plugin>
 
         <!-- 配置自定义注释生成器 -->
         <commentGenerator type="cn.denvie.mybatis.mbg.MyCommentGenerator">
-            <!-- 是否去除自动生成的注释 -->
+            <!-- suppressAllComments: 是否去除自动生成的注释 -->
             <property name="suppressAllComments" value="true"/>
             <property name="suppressDate" value="true"/>
             <property name="addRemarkComments" value="true"/>
             <property name="dateFormat" value="yyyy/M/dd"/>
+            <property name="author" value="denvie"/>
+            <property name="copyright" value="Copyright © 2020-2020 尛飛俠（Denvie） All rights reserved."/>
         </commentGenerator>
 
         <!-- 配置数据库连接 -->

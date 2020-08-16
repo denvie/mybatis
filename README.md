@@ -1,5 +1,5 @@
 ## 介绍
-MyBatis3使用示例。
+MyBatis3 training。
 
 #### 参考资料
 * MyBatis3 文档：[https://mybatis.org/mybatis-3/index.html](https://mybatis.org/mybatis-3/index.html)
