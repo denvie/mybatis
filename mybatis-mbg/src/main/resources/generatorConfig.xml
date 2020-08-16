@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="jdbc.properties"/>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 为模型生成序列化方法 -->
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>-->
+        <!-- 为生成的Java模型创建一个toString方法 -->
+        <!--<plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>-->
+        <!-- 生成mapper.xml时覆盖原文件 -->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+
+        <!-- 配置自定义插件 -->
+        <plugin type="cn.denvie.mybatis.mbg.MapperGeneratorPlugin" >
+            <property name="addRemarkComments" value="true"/>
+            <property name="dateFormat" value="yyyy/M/dd"/>
+        </plugin>
+
+        <!-- 配置自定义注释生成器 -->
+        <commentGenerator type="cn.denvie.mybatis.mbg.MyCommentGenerator">
+            <!-- 是否去除自动生成的注释 -->
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+            <property name="dateFormat" value="yyyy/M/dd"/>
+        </commentGenerator>
+
+        <!-- 配置数据库连接 -->
+        <jdbcConnection driverClass="${driverClass}"
+                        connectionURL="${connectionURL}"
+                        userId="${userId}"
+                        password="${password}">
+            <!--解决MySQL驱动升级到8.0后不生成指定数据库代码的问题-->
+            <property name="nullCatalogMeansCurrent" value="true" />
+            <!-- 解决introspectedTable.getRemarks()为空的问题 -->
+            <property name="useInformationSchema" value="true" />
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- 配置生成的Model类存放位置 -->
+        <javaModelGenerator targetPackage="cn.denvie.mybatis.model" targetProject="mybatis-mbg/src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <!-- 生成的Model的字符串属性是否先trim()再赋值 -->
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+
+        <!-- 配置生成的映射文件存放位置 -->
+        <sqlMapGenerator targetPackage="mapper"  targetProject="mybatis-mbg/src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!--配置生成Dao类策略-->
+        <!--
+            type="ANNOTATEDMAPPER"，生成Java Model和基于注解的Mapper对象
+            type="MIXEDMAPPER"，生成基于注解的Java Model和相应的Mapper对象
+            type="XMLMAPPER"，生成SQLMap XML文件和独立的Mapper接口
+        -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.denvie.mybatis.mapper"  targetProject="mybatis-mbg/src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table tableName="user" domainObjectName="User"
+               enableCountByExample="false"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="false"
+               enableInsert="true"
+               enableSelectByExample="false"
+               enableSelectByPrimaryKey="true"
+               enableUpdateByExample="false"
+               enableUpdateByPrimaryKey="true"
+               selectByExampleQueryId="false"
+               selectByPrimaryKeyQueryId="true">
+            <!--
+            generatedKey用于配置生成主键的方法，如果设置了该元素，MBG会在生成的'insert'元素中
+            生成一条正确的<selectKey>元素，该元素可选：
+                column：主键的列名
+                sqlStatement：要生成的selectKey语句，有以下可选项：
+                    Cloudscape：相当于selectKey的SQL为： VALUES IDENTITY_VAL_LOCAL()
+                    DB2       ：相当于selectKey的SQL为： VALUES IDENTITY_VAL_LOCAL()
+                    DB2_MF    ：相当于selectKey的SQL为：SELECT IDENTITY_VAL_LOCAL() FROM SYSIBM.SYSDUMMY1
+                    Derby     ：相当于selectKey的SQL为：VALUES IDENTITY_VAL_LOCAL()
+                    HSQLDB    ：相当于selectKey的SQL为：CALL IDENTITY()
+                    Informix  ：相当于selectKey的SQL为：select dbinfo('sqlca.sqlerrd1') from systables where tabid=1
+                    MySql     ：相当于selectKey的SQL为：SELECT LAST_INSERT_ID()
+                    SqlServer ：相当于selectKey的SQL为：SELECT SCOPE_IDENTITY()
+                    SYBASE    ：相当于selectKey的SQL为：SELECT @@IDENTITY
+                    JDBC      ：相当于在生成的insert元素上添加useGeneratedKeys="true"和keyProperty属性
+            -->
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+    </context>
+</generatorConfiguration>

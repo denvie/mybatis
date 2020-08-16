@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 属性配置 -->
+    <properties resource="jdbc.properties"/>
+    
+    <settings>
+        <!-- 开启驼峰命名自动映射 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    
+    <plugins>
+        <!-- 配置PageHelper分页插件 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!-- 数据库方言 -->
+            <property name="helperDialect" value="mysql"/>
+            <!-- 设置为 true 时，如果 pageSize=0 就会查询出全部的结果，默认值为 false -->
+            <property name="pageSizeZero" value="true"/>
+        </plugin>
+    </plugins>
+
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 映射配置 -->
+    <mappers>
+        <!--<package name="cn.denvie.mybatis.mapper"/>-->
+        <mapper resource="mapper/UserMapper.xml"/>
+    </mappers>
+</configuration>
