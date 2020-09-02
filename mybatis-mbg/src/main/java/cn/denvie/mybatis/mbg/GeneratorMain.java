@@ -28,13 +28,13 @@ public class GeneratorMain {
     public static void main(String[] args) throws URISyntaxException, IOException, XMLParserException,
             InvalidConfigurationException, SQLException, InterruptedException {
         // 收集MBG执行过程中的警告信息
-        List<String> warnings = new ArrayList<String>();
-        // 当生成的代码重复时，覆盖原代码
-        boolean overwrite = true;
+        List<String> warnings = new ArrayList<>();
         // 读取MBG配置文件
         File configFile = new File(GeneratorMain.class.getResource("/generatorConfig.xml").toURI());
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);
+        // 当生成的代码重复时，覆盖原代码
+        boolean overwrite = true;
         DefaultShellCallback callback = new DefaultShellCallback(overwrite);
         MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
         // 执行生成代码

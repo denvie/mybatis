@@ -55,16 +55,20 @@ public class MapperGeneratorPlugin extends PluginAdapter {
     @Override
     public boolean clientGenerated(Interface interfaze, IntrospectedTable introspectedTable) {
         String baseRecordType = introspectedTable.getBaseRecordType();
-        // 添加父接口，比如通用接口：com.github.abel533.mapper.Mapper
-        /*FullyQualifiedJavaType superJavaType = new FullyQualifiedJavaType("Mapper<" + baseRecordType + ">");
-        interfaze.addSuperInterface(superJavaType);*/
+        // 添加父接口
+        interfaze.addSuperInterface(
+                new FullyQualifiedJavaType("BaseMapper<" + baseRecordType + ">"));
 
         // 导包
         FullyQualifiedJavaType baseRecordTypeImportDeclare = new FullyQualifiedJavaType(baseRecordType);
         interfaze.addImportedType(baseRecordTypeImportDeclare);
+        interfaze.addImportedType(
+                new FullyQualifiedJavaType("org.apache.ibatis.annotations.Mapper"));
+        interfaze.addImportedType(
+                new FullyQualifiedJavaType("tk.mybatis.mapper.common.BaseMapper"));
 
         // 根据实际业务添加配置
-        // interfaze.addAnnotation("@Component(\"" + introspectedTable.getFullyQualifiedTable() + "\")");
+        interfaze.addAnnotation("@Mapper");
 
         // 添加类注释
         if (addRemarkComments) {

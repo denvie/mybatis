@@ -12,16 +12,30 @@
     <modules>
         <module>mybatis-common</module>
         <module>mybatis-mbg</module>
+        <module>mybatis-spring-boot</module>
     </modules>
 
     <properties>
         <skipTests>true</skipTests>
+        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
         <mybatis.version>3.5.5</mybatis.version>
         <mybatis-generator.version>1.4.0</mybatis-generator.version>
         <pagehelper.version>5.2.0</pagehelper.version>
-        <mysql-connector.version>8.0.21</mysql-connector.version>
-        <lombok.version>1.18.12</lombok.version>
-        <junit.version>4.13</junit.version>
+        <mybatis-spring-boot-starter.version>2.1.3</mybatis-spring-boot-starter.version>
+        <mapper-spring-boot-starter.version>2.1.5</mapper-spring-boot-starter.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Import dependency management from Spring Boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>

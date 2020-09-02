@@ -11,8 +11,11 @@ import org.mybatis.generator.config.PropertyRegistry;
 import org.mybatis.generator.internal.DefaultCommentGenerator;
 import org.mybatis.generator.internal.util.StringUtility;
 
+import javax.persistence.Table;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 import java.util.Properties;
 
 /**
@@ -21,6 +24,7 @@ import java.util.Properties;
  * @author denvie
  * @since 2020/8/16
  */
+@Table(name = "abc")
 public class MyCommentGenerator extends DefaultCommentGenerator {
     private boolean addRemarkComments = false;
     private SimpleDateFormat dateFormat = null;
@@ -56,12 +60,18 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
         compilationUnit.addFileCommentLine(" */");
         compilationUnit.addFileCommentLine("");
 
-        // 声明 import 导入信息
-        /*if (!compilationUnit.getType().getFullyQualifiedName().endsWith("Example")
+        // 为Model声明 import 导入信息
+        if (!compilationUnit.getType().getFullyQualifiedName().endsWith("Example")
                 && !compilationUnit.getType().getFullyQualifiedName().endsWith("Mapper")) {
             compilationUnit.addImportedType(
-                    new FullyQualifiedJavaType("io.swagger.annotations.ApiModelProperty"));
-        }*/
+                    new FullyQualifiedJavaType("javax.persistence.Column"));
+            compilationUnit.addImportedType(
+                    new FullyQualifiedJavaType("javax.persistence.GeneratedValue"));
+            compilationUnit.addImportedType(
+                    new FullyQualifiedJavaType("javax.persistence.Id"));
+            compilationUnit.addImportedType(
+                    new FullyQualifiedJavaType("javax.persistence.Table"));
+        }
     }
 
     /**
@@ -77,7 +87,11 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
             String tableName = introspectedTable.getFullyQualifiedTable().getIntrospectedTableName();
             remarks = "This class corresponds to the database table " + tableName;
         }
+        // 给Model实体添加注释
         addComments(topLevelClass, remarks, true);
+        // 给Model实体添加 @Table 注解
+        topLevelClass.addAnnotation("@Table(name = \""
+                + introspectedTable.getFullyQualifiedTableNameAtRuntime() + "\")");
     }
 
     /**
@@ -93,10 +107,18 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
         if (!StringUtility.stringHasValue(remarks)) {
             remarks = introspectedColumn.getActualColumnName();
         }
-        // 给Model的字段添加注解
+        // 给Model的字段添加注释
         addComments(field, remarks, false);
-        // 添加Swagger注解
-        // field.addJavaDocLine("@ApiModelProperty(value = \"" + remarks + "\")");
+        // 给Model的字段添加 @Id 注解
+        if (introspectedColumn.isIdentity()) {
+            field.addAnnotation("@Id");
+        }
+        // 给Model的字段添加 @GeneratedValue 注解
+        if (introspectedColumn.isAutoIncrement()) {
+            field.addAnnotation("@GeneratedValue(generator = \"JDBC\")");
+        }
+        // 给Model的字段添加 @Column 注解
+        field.addAnnotation("@Column(name = \"" + introspectedColumn.getActualColumnName() + "\")");
     }
 
     // add class or field comment
@@ -120,7 +142,7 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
     }
 
     /**
-     * 添加普通方法的注释，主要是XXXMapper里面的接口方法的注释
+     * 添加普通方法的注释，主要是XxxMapper接口方法的注释
      */
     @Override
     public void addGeneralMethodComment(Method method, IntrospectedTable introspectedTable) {
@@ -129,6 +151,25 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
         }
         method.addJavaDocLine("/**");
         method.addJavaDocLine(" * " + method.getName());
+        // 添加 @param 注释
+        List<Parameter> parameters = method.getParameters();
+        if (parameters != null && parameters.size() > 0) {
+            method.addJavaDocLine(" * ");
+            for (Parameter parameter : parameters) {
+                method.addJavaDocLine(" * @param " + parameter.getName() + " " + parameter.getType().getShortName());
+            }
+        }
+        // 添加 @return 注释
+        Optional<FullyQualifiedJavaType> returnTypeOptional = method.getReturnType();
+        returnTypeOptional.ifPresent(fullyQualifiedJavaType ->
+                method.addJavaDocLine(" * @return " + fullyQualifiedJavaType.getShortName()));
+        // 添加 @throws 注释
+        List<FullyQualifiedJavaType> exceptions = method.getExceptions();
+        if (exceptions != null && exceptions.size() > 0) {
+            for (FullyQualifiedJavaType exception : exceptions) {
+                method.addJavaDocLine(" * @throws " + exception.getShortName() + " " + exception.getShortName());
+            }
+        }
         method.addJavaDocLine(" */");
     }
 }
