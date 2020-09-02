@@ -16,6 +16,10 @@
     </modules>
 
     <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <skipTests>true</skipTests>
         <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
         <mybatis.version>3.5.5</mybatis.version>
