@@ -14,13 +14,16 @@
             <name>Denvie</name>
             <email>7382763@qq.com</email>
             <url>http://www.denvie.cn</url>
+            <timezone>8</timezone>
         </developer>
     </developers>
 
     <modules>
+        <module>mybatis-common</module>
         <module>mybatis-3</module>
         <module>mybatis-generator</module>
         <module>mybatis-spring-boot</module>
+        <module>mybatis-plus</module>
     </modules>
 
     <properties>
@@ -44,6 +47,8 @@
         <pagehelper-spring-boot.version>1.3.0</pagehelper-spring-boot.version>
         <!-- https://github.com/abel533/mapper-boot-starter -->
         <mapper-spring-boot-starter.version>2.1.5</mapper-spring-boot-starter.version>
+        <!-- https://github.com/baomidou/mybatis-plus -->
+        <mybatis-plus.version>3.4.0</mybatis-plus.version>
     </properties>
 
     <dependencies>
@@ -70,6 +75,11 @@
                 <scope>import</scope>
             </dependency>
             <!-- Project dependency management -->
+            <dependency>
+                <groupId>cn.denvie</groupId>
+                <artifactId>mybatis-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
@@ -99,6 +109,11 @@
                 <groupId>tk.mybatis</groupId>
                 <artifactId>mapper-spring-boot-starter</artifactId>
                 <version>${mapper-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

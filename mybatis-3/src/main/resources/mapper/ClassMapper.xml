@@ -4,12 +4,12 @@
     <!-- 缓存设置 -->
     <cache eviction="LRU" flushInterval="600000" size="1024" readOnly="true" blocking="false"/>
 
-    <resultMap id="BaseResultMap" type="cn.denvie.mybatis.model.Class">
+    <resultMap id="BaseResultMap" type="cn.denvie.mybatis.common.model.Class">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="grade" jdbcType="INTEGER" property="grade"/>
         <collection column="id" property="students" javaType="ArrayList"
-                    ofType="cn.denvie.mybatis.model.Student" select="selectStudentsByClassId"
+                    ofType="cn.denvie.mybatis.common.model.Student" select="selectStudentsByClassId"
                     fetchType="lazy" />
     </resultMap>
 
@@ -17,7 +17,7 @@
     id, name, grade
     </sql>
 
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.denvie.mybatis.model.Class"
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.denvie.mybatis.common.model.Class"
             useGeneratedKeys="true">
     insert into tbl_class
         (name, grade)
@@ -39,7 +39,7 @@
     </select>
 
     <select id="selectStudentsByClassId" parameterType="java.lang.Integer"
-            resultType="cn.denvie.mybatis.model.Student">
+            resultType="cn.denvie.mybatis.common.model.Student">
         select *
         from tbl_student
         where class_id = #{id}

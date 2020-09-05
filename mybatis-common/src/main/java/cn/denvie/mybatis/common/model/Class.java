@@ -2,7 +2,7 @@
  * Copyright © 2020-2020 尛飛俠（Denvie） All rights reserved.
  */
 
-package cn.denvie.mybatis.model;
+package cn.denvie.mybatis.common.model;
 
 import java.util.List;
 

@@ -1,5 +1,5 @@
 ## 介绍
-MyBatis3 training。
+MyBatis training.
 
 #### 参考资料
 * MyBatis3 文档：[https://mybatis.org/mybatis-3/index.html](https://mybatis.org/mybatis-3/index.html)
@@ -9,3 +9,5 @@ MyBatis3 training。
 * MyBatis Spring Boot Starter Github: [https://github.com/mybatis/spring-boot-starter](https://github.com/mybatis/spring-boot-starter)
 * PageHelper Github：[https://github.com/pagehelper/Mybatis-PageHelper](https://github.com/pagehelper/Mybatis-PageHelper)
 * PageHelper Spring Boot Starter Github: [https://github.com/pagehelper/pagehelper-spring-boot](https://github.com/pagehelper/pagehelper-spring-boot)
+* MyBatis Plus 文档：[https://baomidou.com/guide](https://baomidou.com/guide/)
+* MyBatis Plus Github: [https://github.com/baomidou/mybatis-plus](https://github.com/baomidou/mybatis-plus)

@@ -2,7 +2,7 @@
  * Copyright © 2020-2020 尛飛俠（Denvie） All rights reserved.
  */
 
-package cn.denvie.mybatis.model;
+package cn.denvie.mybatis.common.model;
 
 /**
  * 用户表
@@ -24,9 +24,17 @@ public class User {
      */
     private String password;
     /**
+     * 昵称
+     */
+    private String nickname;
+    /**
      * 年龄
      */
     private Integer age;
+    /**
+     * 邮箱
+     */
+    private String email;
     /**
      * 描述
      */
@@ -56,6 +64,14 @@ public class User {
         this.password = password;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
     public Integer getAge() {
         return age;
     }
@@ -64,11 +80,32 @@ public class User {
         this.age = age;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

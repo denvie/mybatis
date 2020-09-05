@@ -4,7 +4,7 @@
 
 package cn.denvie.mybatis.springboot.mapper;
 
-import cn.denvie.mybatis.springboot.model.User;
+import cn.denvie.mybatis.common.model.User;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Mapper;
 

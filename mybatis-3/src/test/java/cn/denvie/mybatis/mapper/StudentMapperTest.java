@@ -4,7 +4,7 @@
 
 package cn.denvie.mybatis.mapper;
 
-import cn.denvie.mybatis.model.Student;
+import cn.denvie.mybatis.common.model.Student;
 import org.junit.Assert;
 import org.junit.Test;
 
