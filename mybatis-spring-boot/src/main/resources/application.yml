@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.18.44.145:3306/mybatis?serverTimezone=GMT%2B8&useSSL=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    default-statement-timeout: 30
+    cache-enabled: true
+    lazy-loading-enabled: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.denvie.mybatis.springboot.model
+
+logging:
+  level:
+    root: INFO
+    cn.denvie.mybatis: DEBUG
+    tk.mybatis.pagehelper.mapper: DEBUG
+
+pagehelper:
+  page-size-zero: true
+  auto-dialect: true
+  helper-dialect: mysql

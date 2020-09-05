@@ -4,6 +4,14 @@
 
 package cn.denvie.mybatis.springboot;
 
+import cn.denvie.mybatis.springboot.mapper.UserMapper;
+import cn.denvie.mybatis.springboot.model.User;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import lombok.RequiredArgsConstructor;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,10 +22,22 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 2020/9/2
  */
 @SpringBootApplication
-public class MybatisSpringBootApplication {
+@MapperScan(basePackages = "cn.denvie.mybatis.springboot.mapper")
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+public class MybatisSpringBootApplication implements CommandLineRunner {
+    private final UserMapper userMapper;
 
     public static void main(String[] args) {
         SpringApplication.run(MybatisSpringBootApplication.class, args);
     }
 
+    @Override
+    public void run(String... args) throws Exception {
+        PageHelper.startPage(1, 10);
+        Page<User> users = userMapper.selectAll();
+        System.out.println("Total: " + users.getTotal());
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
 }
