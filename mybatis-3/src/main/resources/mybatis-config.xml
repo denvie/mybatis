@@ -9,6 +9,12 @@
     <settings>
         <!-- 开启驼峰命名自动映射 -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 全局开启或关闭缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+        <!-- 延迟加载的全局开关 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 日志的具体实现，未指定时将自动查找 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
     
     <plugins>

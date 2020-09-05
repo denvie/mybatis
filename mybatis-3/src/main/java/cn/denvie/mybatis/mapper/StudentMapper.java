@@ -6,8 +6,10 @@ package cn.denvie.mybatis.mapper;
 
 import cn.denvie.mybatis.model.Student;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 学生表 Mapper
@@ -17,4 +19,19 @@ import java.util.List;
  */
 @Mapper
 public interface StudentMapper extends BaseMapper<Student> {
+    /**
+     * 批量添加学生。
+     *
+     * @param students students
+     * @return int
+     */
+    int batchInsert(@Param("students") List<Student> students);
+
+    /**
+     * 根据参数Map查询。
+     *
+     * @param params 参数Map
+     * @return List<Student>
+     */
+    List<Student> selectByMap(Map<String, Object> params);
 }

@@ -19,26 +19,26 @@ import java.util.List;
 public class ClassMapperTest extends AbstractBaseTest {
     @Test
     public void testInsert() {
-        ClassMapper mapper = session.getMapper(ClassMapper.class);
+        ClassMapper mapper = getSession().getMapper(ClassMapper.class);
         Class myClass = new Class();
         myClass.setName("一班");
         myClass.setGrade(1);
         int insert = mapper.insert(myClass);
-        session.commit();
+        getSession().commit();
         Assert.assertTrue(insert > 0);
         System.out.println(myClass);
     }
 
     @Test
     public void testSelectById() {
-        ClassMapper mapper = session.getMapper(ClassMapper.class);
+        ClassMapper mapper = getSession().getMapper(ClassMapper.class);
         Class myClass = mapper.selectById(1);
         System.out.println(myClass);
     }
 
     @Test
     public void testSelectAll() {
-        ClassMapper mapper = session.getMapper(ClassMapper.class);
+        ClassMapper mapper = getSession().getMapper(ClassMapper.class);
         List<Class> classes = mapper.selectAll();
         for (Class cls : classes) {
             System.out.println(cls);

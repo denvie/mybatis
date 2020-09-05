@@ -41,50 +41,26 @@
             useGeneratedKeys="true">
         insert into tbl_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="username != null">
-                username,
-            </if>
-            <if test="password != null">
-                password,
-            </if>
-            <if test="age != null">
-                age,
-            </if>
-            <if test="description != null">
-                description,
-            </if>
+            <if test="username != null">username,</if>
+            <if test="password != null">password,</if>
+            <if test="age != null">age,</if>
+            <if test="description != null">description,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="username != null">
-                #{username,jdbcType=VARCHAR},
-            </if>
-            <if test="password != null">
-                #{password,jdbcType=VARCHAR},
-            </if>
-            <if test="age != null">
-                #{age,jdbcType=INTEGER},
-            </if>
-            <if test="description != null">
-                #{description,jdbcType=VARCHAR},
-            </if>
+            <if test="username != null">#{username,jdbcType=VARCHAR},</if>
+            <if test="password != null">#{password,jdbcType=VARCHAR},</if>
+            <if test="age != null">#{age,jdbcType=INTEGER},</if>
+            <if test="description != null">#{description,jdbcType=VARCHAR},</if>
         </trim>
     </insert>
 
     <update id="updateByPrimaryKeySelective" parameterType="cn.denvie.mybatis.model.User">
         update tbl_user
         <set>
-            <if test="username != null">
-                username = #{username,jdbcType=VARCHAR},
-            </if>
-            <if test="password != null">
-                password = #{password,jdbcType=VARCHAR},
-            </if>
-            <if test="age != null">
-                age = #{age,jdbcType=INTEGER},
-            </if>
-            <if test="description != null">
-                description = #{description,jdbcType=VARCHAR},
-            </if>
+            <if test="username != null">username = #{username,jdbcType=VARCHAR},</if>
+            <if test="password != null">password = #{password,jdbcType=VARCHAR},</if>
+            <if test="age != null">age = #{age,jdbcType=INTEGER},</if>
+            <if test="description != null">description = #{description,jdbcType=VARCHAR},</if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
@@ -92,9 +68,9 @@
     <update id="updateByPrimaryKey" parameterType="cn.denvie.mybatis.model.User">
     update tbl_user
     set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      age = #{age,jdbcType=INTEGER},
-      description = #{description,jdbcType=VARCHAR}
+        password = #{password,jdbcType=VARCHAR},
+        age = #{age,jdbcType=INTEGER},
+        description = #{description,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

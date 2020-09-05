@@ -10,7 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>mybatis-common</artifactId>
+    <artifactId>mybatis-3</artifactId>
 
     <dependencies>
         <dependency>

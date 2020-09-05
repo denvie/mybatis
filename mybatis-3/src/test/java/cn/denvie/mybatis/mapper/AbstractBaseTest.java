@@ -16,7 +16,7 @@ import org.junit.Before;
  * @since 2020/9/5
  */
 public abstract class AbstractBaseTest {
-    protected SqlSession session;
+    private SqlSession session;
 
     @Before
     public void setUp() {
@@ -28,5 +28,14 @@ public abstract class AbstractBaseTest {
         if (session != null) {
             session.close();
         }
+    }
+
+    /**
+     * get SqlSession.
+     *
+     * @return SqlSession
+     */
+    protected SqlSession getSession() {
+        return session;
     }
 }
