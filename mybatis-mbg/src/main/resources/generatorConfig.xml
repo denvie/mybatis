@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <properties resource="jdbc.properties"/>
+    <properties resource="jdbcConfig.properties"/>
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <property name="javaFileEncoding" value="UTF-8"/>
@@ -38,7 +38,7 @@
                         connectionURL="${connectionURL}"
                         userId="${userId}"
                         password="${password}">
-            <!--解决MySQL驱动升级到8.0后不生成指定数据库代码的问题-->
+            <!-- 解决MySQL驱动升级到8.0后不生成指定数据库代码的问题 -->
             <property name="nullCatalogMeansCurrent" value="true" />
             <!-- 解决introspectedTable.getRemarks()为空的问题 -->
             <property name="useInformationSchema" value="true" />
@@ -49,7 +49,7 @@
         </javaTypeResolver>
 
         <!-- 配置生成的Model类存放位置 -->
-        <javaModelGenerator targetPackage="cn.denvie.mybatis.model" targetProject="mybatis-mbg/src/main/java">
+        <javaModelGenerator targetPackage="cn.denvie.mybatis.app.model" targetProject="mybatis-mbg/src/main/java">
             <property name="enableSubPackages" value="true" />
             <!-- 生成的Model的字符串属性是否先trim()再赋值 -->
             <property name="trimStrings" value="false" />
@@ -66,21 +66,16 @@
             type="MIXEDMAPPER"，生成基于注解的Java Model和相应的Mapper对象
             type="XMLMAPPER"，生成SQLMap XML文件和独立的Mapper接口
         -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.denvie.mybatis.mapper"  targetProject="mybatis-mbg/src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.denvie.mybatis.app.mapper" targetProject="mybatis-mbg/src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="user" domainObjectName="User"
-               enableCountByExample="false"
-               enableDeleteByPrimaryKey="true"
-               enableDeleteByExample="false"
-               enableInsert="true"
-               enableSelectByExample="false"
-               enableSelectByPrimaryKey="true"
-               enableUpdateByExample="false"
-               enableUpdateByPrimaryKey="true"
-               selectByExampleQueryId="false"
-               selectByPrimaryKeyQueryId="true">
+        <!-- 用户表 -->
+        <table tableName="tbl_user" domainObjectName="User" mapperName="UserMapper"
+               enableCountByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false"
+               enableInsert="false" enableSelectByExample="false" enableSelectByPrimaryKey="true"
+               enableUpdateByExample="false" enableUpdateByPrimaryKey="false" selectByExampleQueryId="false"
+               selectByPrimaryKeyQueryId="false">
             <!--
             generatedKey用于配置生成主键的方法，如果设置了该元素，MBG会在生成的'insert'元素中
             生成一条正确的<selectKey>元素，该元素可选：
@@ -99,5 +94,21 @@
             -->
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
+        <!-- 学生表、老师表、班级表 -->
+        <table tableName="tbl_student" domainObjectName="Student" mapperName="StudentMapper"
+               enableCountByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false"
+               enableInsert="false" enableSelectByExample="false" enableSelectByPrimaryKey="true"
+               enableUpdateByExample="false" enableUpdateByPrimaryKey="false" selectByExampleQueryId="false"
+               selectByPrimaryKeyQueryId="false"/>
+        <table tableName="tbl_teacher" domainObjectName="Teacher" mapperName="TeacherMapper"
+               enableCountByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false"
+               enableInsert="false" enableSelectByExample="false" enableSelectByPrimaryKey="true"
+               enableUpdateByExample="false" enableUpdateByPrimaryKey="false" selectByExampleQueryId="false"
+               selectByPrimaryKeyQueryId="false"/>
+        <table tableName="tbl_class" domainObjectName="Class" mapperName="ClassMapper"
+               enableCountByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false"
+               enableInsert="false" enableSelectByExample="false" enableSelectByPrimaryKey="true"
+               enableUpdateByExample="false" enableUpdateByPrimaryKey="false" selectByExampleQueryId="false"
+               selectByPrimaryKeyQueryId="false"/>
     </context>
 </generatorConfiguration>

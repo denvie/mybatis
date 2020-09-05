@@ -37,5 +37,7 @@
     <mappers>
         <!--<package name="cn.denvie.mybatis.mapper"/>-->
         <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/ClassMapper.xml"/>
+        <mapper resource="mapper/StudentMapper.xml"/>
     </mappers>
 </configuration>
