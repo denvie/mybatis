@@ -2,7 +2,7 @@
  * Copyright © 2020-2020 尛飛俠（Denvie） All rights reserved.
  */
 
-package cn.denvie.mybatis.mbg;
+package cn.denvie.mybatis.generator;
 
 import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.IntrospectedTable;

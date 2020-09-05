@@ -16,14 +16,14 @@
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
 
         <!-- 配置自定义插件 -->
-        <plugin type="cn.denvie.mybatis.mbg.MapperGeneratorPlugin" >
+        <plugin type="cn.denvie.mybatis.generator.MapperGeneratorPlugin" >
             <property name="addRemarkComments" value="true"/>
             <property name="dateFormat" value="yyyy/M/dd"/>
             <property name="author" value="denvie"/>
         </plugin>
 
         <!-- 配置自定义注释生成器 -->
-        <commentGenerator type="cn.denvie.mybatis.mbg.MyCommentGenerator">
+        <commentGenerator type="cn.denvie.mybatis.generator.MyCommentGenerator">
             <!-- suppressAllComments: 是否去除自动生成的注释 -->
             <property name="suppressAllComments" value="true"/>
             <property name="suppressDate" value="true"/>
@@ -94,13 +94,8 @@
             -->
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
-        <!-- 学生表、老师表、班级表 -->
+        <!-- 学生表、班级表 -->
         <table tableName="tbl_student" domainObjectName="Student" mapperName="StudentMapper"
-               enableCountByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false"
-               enableInsert="false" enableSelectByExample="false" enableSelectByPrimaryKey="true"
-               enableUpdateByExample="false" enableUpdateByPrimaryKey="false" selectByExampleQueryId="false"
-               selectByPrimaryKeyQueryId="false"/>
-        <table tableName="tbl_teacher" domainObjectName="Teacher" mapperName="TeacherMapper"
                enableCountByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false"
                enableInsert="false" enableSelectByExample="false" enableSelectByPrimaryKey="true"
                enableUpdateByExample="false" enableUpdateByPrimaryKey="false" selectByExampleQueryId="false"
