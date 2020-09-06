@@ -36,7 +36,7 @@
         <!-- 配置数据库连接 -->
         <jdbcConnection driverClass="${driverClass}"
                         connectionURL="${connectionURL}"
-                        userId="${userId}"
+                        userId="${username}"
                         password="${password}">
             <!-- 解决MySQL驱动升级到8.0后不生成指定数据库代码的问题 -->
             <property name="nullCatalogMeansCurrent" value="true" />

@@ -30,13 +30,14 @@ public class MybatisPlusConfig {
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         /*
-         * 配置分页插件。
+         * 配置新的分页插件。
          * 一缓和二缓遵循Mybatis的规则，需要设置 MybatisConfiguration#useDeprecatedExecutor = false
          * 避免缓存出现问题（该属性会在旧插件移除后一同移除）
          */
         interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
         /*
          * 配置乐观锁插件。
+         *
          * 乐观锁实现方式：
          * 1. 取出记录时，获取当前version
          * 2. 更新时，带上这个version
@@ -54,7 +55,6 @@ public class MybatisPlusConfig {
         return interceptor;
     }
 
-    @SuppressWarnings("deprecation")
     @Bean
     public ConfigurationCustomizer configurationCustomizer() {
         return configuration -> configuration.setUseDeprecatedExecutor(false);

@@ -1,0 +1,50 @@
+# 基础配置
+basic:
+  copyright: Copyright © 2020-2020 尛飛俠（Denvie） All rights reserved.
+  author: Denvie
+  fileOverride: false
+  open: false
+  enableCache: true
+  baseResultMap: true
+  baseColumnList: true
+  idType: ASSIGN_ID
+  swagger2: false
+  mapperSuffix: Mapper
+  parentPackage: cn.denvie.mybatis.plus
+  entityPackage: domain.entity
+  mapperPackage: mapper
+  servicePackage: service
+  serviceImplPackage: service.impl
+  controllerPackage: controller
+
+# JDBC配置
+jdbc:
+  dbType: mysql
+  url: jdbc:mysql://172.18.44.145:3306/mybatis-plus?serverTimezone=GMT%2B8&useSSL=true&useUnicode=true&characterEncoding=UTF-8
+  driverName: com.mysql.cj.jdbc.Driver
+  username: root
+  password: root
+
+# 表策略配置
+table:
+  entityLombokModel: true
+  versionFieldName: lockVersion
+  logicDeleteFieldName: deleted
+  entityTableFieldAnnotationEnable: true
+  restControllerStyle: true
+  controllerMappingHyphenStyle: true
+  entitySerialVersionUID: false
+  superEntityClass: cn.denvie.mybatis.plus.entity.BaseEntity
+  superEntityColumns: gmt_create, gmt_modified, lock_version, deleted
+  tableFillVoList:
+    - fieldName: gmtCreate
+      fieldFill: INSERT
+    - fieldName: gmtModified
+      fieldFill: UPDATE
+
+# 业务模块配置
+modules:
+  - moduleName: app
+    modulePath: mybatis-plus-generator
+    include: tbl_user, tbl_student, tbl_class
+    tablePrefix: tbl_
