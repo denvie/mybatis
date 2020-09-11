@@ -50,14 +50,17 @@
         </javaTypeResolver>
 
         <!-- 配置生成的Model类存放位置 -->
-        <javaModelGenerator targetPackage="cn.denvie.mybatis.app.entity" targetProject="mybatis-generator/src/main/java">
+        <javaModelGenerator targetPackage="cn.denvie.mybatis.user.entity" targetProject="mybatis-generator/src/main/java">
+            <!-- 是否根据数据库的schema再生成一层package -->
             <property name="enableSubPackages" value="true" />
             <!-- 生成的Model的字符串属性是否先trim()再赋值 -->
             <property name="trimStrings" value="false" />
+            <!-- 设置Model的父类，如果Model的某个属性在父类中已存在，则不会生成该属性 -->
+            <!--<property name="rootClass" value="cn.denvie.mybatis.user.entity.BaseEntity"/>-->
         </javaModelGenerator>
 
         <!-- 配置生成的映射文件存放位置 -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="mybatis-generator/src/main/resources">
+        <sqlMapGenerator targetPackage="mapper.user" targetProject="mybatis-generator/src/main/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
@@ -67,7 +70,7 @@
             type="MIXEDMAPPER"，生成基于注解的Java Model和相应的Mapper对象
             type="XMLMAPPER"，生成SQLMap XML文件和独立的Mapper接口
         -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.denvie.mybatis.app.mapper" targetProject="mybatis-generator/src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.denvie.mybatis.user.mapper" targetProject="mybatis-generator/src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 

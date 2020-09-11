@@ -11,7 +11,6 @@ import org.mybatis.generator.config.PropertyRegistry;
 import org.mybatis.generator.internal.DefaultCommentGenerator;
 import org.mybatis.generator.internal.util.StringUtility;
 
-import javax.persistence.Table;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +23,6 @@ import java.util.Properties;
  * @author Denvie
  * @since 2020/8/16
  */
-@Table(name = "abc")
 public class MyCommentGenerator extends DefaultCommentGenerator {
     private boolean addRemarkComments = false;
     private SimpleDateFormat dateFormat = null;
