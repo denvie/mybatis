@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * MyBatis代码生成器。
@@ -30,7 +31,8 @@ public class GeneratorMain {
     public static void main(String[] args) throws IOException, XMLParserException,
             InvalidConfigurationException, SQLException, InterruptedException {
         // 读取MBG配置文件列表
-        String mbgDir = GeneratorMain.class.getClassLoader().getResource("mbg-config").getFile();
+        String mbgDir = Objects.requireNonNull(
+                GeneratorMain.class.getClassLoader().getResource("mbg-config")).getFile();
         File[] files = new File(mbgDir).listFiles((dir, name) -> name != null && name.endsWith(".xml"));
         if (files == null || files.length == 0) {
             System.out.println("no configuration file found.");
