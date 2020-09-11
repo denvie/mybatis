@@ -8,7 +8,7 @@ Mybatis training, such as common operation, paging, Mybatis Plus, generator etc.
 
 * #### **mybatis-generator**
 
-基于[mybatis-generator](http://mybatis.org/generator/)实现根据数据库表自动生成对应的Entity、Mapper、映射文件，通过自定义**CommentGenerator**以及**PluginAdapter**自动生成Java文件的版权信息、类注释、属性注释、方法注释等。
+基于[mybatis-generator](http://mybatis.org/generator/)实现根据数据库表自动生成对应的Entity、Mapper、Service、ServiceImpl、Controller、映射文件，通过自定义**CommentGenerator**以及**PluginAdapter**自动生成Java文件的版权信息、类注释、属性注释、方法注释等。
 
 * #### **mybatis-plus-generator**
 
