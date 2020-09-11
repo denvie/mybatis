@@ -15,7 +15,7 @@ import java.io.InputStream;
 /**
  * MyBatisUtils.
  *
- * @author denvie
+ * @author Denvie
  * @since 2020/8/16
  */
 public class MyBatisUtils {

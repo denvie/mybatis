@@ -15,6 +15,7 @@ import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.querys.MySqlQuery;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import com.google.common.base.Splitter;
@@ -28,7 +29,7 @@ import java.util.Map;
 /**
  * Mybatis Plus Generator Main。
  *
- * @author denvie
+ * @author Denvie
  * @since 2020/9/6
  */
 public class MpGeneratorMain {

@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://172.18.44.145:3306/mybatis-plus?serverTimezone=GMT%2B8&useSSL=true&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://host.docker.internal:3306/mybatis-plus?serverTimezone=GMT%2B8&useSSL=true&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: root
     schema: classpath:sql/schema.sql

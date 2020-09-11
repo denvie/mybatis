@@ -10,7 +10,7 @@ import java.util.List;
  * BaseMapper。
  *
  * @param <Entity> 实体类
- * @author denvie
+ * @author Denvie
  * @since 2020/9/5
  */
 public interface BaseMapper<Entity> {

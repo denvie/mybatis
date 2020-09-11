@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Mybatis Plus Config。
  *
- * @author denvie
+ * @author Denvie
  * @since 2020/9/6
  */
 @Configuration

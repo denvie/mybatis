@@ -7,7 +7,7 @@ package cn.denvie.mybatis.common.model;
 /**
  * 用户表
  * 
- * @author denvie
+ * @author Denvie
  * @since 2020/9/05
  */
 public class User {

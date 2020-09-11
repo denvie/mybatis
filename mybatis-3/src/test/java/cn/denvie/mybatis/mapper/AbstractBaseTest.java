@@ -12,7 +12,7 @@ import org.junit.Before;
 /**
  * AbstractBaseTest。
  *
- * @author denvie
+ * @author Denvie
  * @since 2020/9/5
  */
 public abstract class AbstractBaseTest {

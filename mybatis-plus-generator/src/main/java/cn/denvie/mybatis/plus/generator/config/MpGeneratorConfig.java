@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * MpGeneratorConfig。
  *
- * @author denvie
+ * @author Denvie
  * @since 2020/9/6
  */
 @Data

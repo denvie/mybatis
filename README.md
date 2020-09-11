@@ -37,7 +37,7 @@ basic:
 # JDBC配置
 jdbc:
   dbType: mysql
-  url: jdbc:mysql://172.18.44.145:3306/mybatis-plus?serverTimezone=GMT%2B8&useSSL=true&useUnicode=true&characterEncoding=UTF-8
+  url: jdbc:mysql://host.docker.internal:3306/mybatis-plus?serverTimezone=GMT%2B8&useSSL=true&useUnicode=true&characterEncoding=UTF-8
   driverName: com.mysql.cj.jdbc.Driver
   username: root
   password: root
@@ -51,7 +51,7 @@ table:
   restControllerStyle: true
   controllerMappingHyphenStyle: true
   entitySerialVersionUID: false
-  superEntityClass: cn.denvie.mybatis.plus.entity.BaseEntity
+  superEntityClass: cn.denvie.mybatis.plus.base.BaseEntity
   superEntityColumns: gmt_create, gmt_modified, lock_version, deleted
   tableFillVoList:
     - fieldName: gmtCreate

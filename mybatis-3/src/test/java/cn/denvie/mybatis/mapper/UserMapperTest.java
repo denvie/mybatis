@@ -14,7 +14,7 @@ import java.util.Random;
 /**
  * UserMapperTest。
  *
- * @author denvie
+ * @author Denvie
  * @since 2020/8/16
  */
 public class UserMapperTest extends AbstractBaseTest {

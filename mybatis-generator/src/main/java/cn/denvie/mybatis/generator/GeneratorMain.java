@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * MyBatis代码生成器。
  *
- * @author denvie
+ * @author Denvie
  * @since 2020/8/16
  */
 public class GeneratorMain {

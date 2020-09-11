@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 用户表 Mapper
  * 
- * @author denvie
+ * @author Denvie
  * @since 2020/9/05
  */
 @Mapper

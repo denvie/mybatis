@@ -10,12 +10,10 @@ import cn.denvie.mybatis.plus.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-
 /**
  * UserServiceImpl。
  *
- * @author denvie
+ * @author Denvie
  * @since 2020/9/6
  */
 @Service

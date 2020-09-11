@@ -2,7 +2,7 @@
  * Copyright © 2020-2020 尛飛俠（Denvie） All rights reserved.
  */
 
-package cn.denvie.mybatis.plus.entity;
+package cn.denvie.mybatis.plus.base;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  * BaseEntity。
  * 根据阿里巴巴开发手册，每张数据库表必备三字段：id, gmt_create, gmt_modified。
  *
- * @author denvie
+ * @author Denvie
  * @since 2020/9/6
  */
 public abstract class BaseEntity {

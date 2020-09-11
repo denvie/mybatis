@@ -18,7 +18,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Mybatis SpringBoot Application.
  *
- * @author denvie
+ * @author Denvie
  * @since 2020/9/2
  */
 @SpringBootApplication

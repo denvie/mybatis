@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 班级表
  * 
- * @author denvie
+ * @author Denvie
  * @since 2020/9/05
  */
 public class Class {

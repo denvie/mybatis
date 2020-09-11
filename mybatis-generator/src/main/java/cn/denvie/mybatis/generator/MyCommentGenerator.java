@@ -21,7 +21,7 @@ import java.util.Properties;
 /**
  * 自定义注释生成器。
  *
- * @author denvie
+ * @author Denvie
  * @since 2020/8/16
  */
 @Table(name = "abc")
@@ -55,10 +55,7 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
             return;
         }
         // Java文件头加入版权信息
-        compilationUnit.addFileCommentLine("/*");
-        compilationUnit.addFileCommentLine(" * " + copyright);
-        compilationUnit.addFileCommentLine(" */");
-        compilationUnit.addFileCommentLine("");
+        GeneratorUtils.addFileComment(compilationUnit, copyright);
 
         // 为Model声明 import 导入信息
         if (!compilationUnit.getType().getFullyQualifiedName().endsWith("Example")

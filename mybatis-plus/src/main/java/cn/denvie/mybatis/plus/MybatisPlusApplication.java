@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Mybatis Plus Application。
  *
- * @author denvie
+ * @author Denvie
  * @since 2020/9/5
  */
 @SpringBootApplication

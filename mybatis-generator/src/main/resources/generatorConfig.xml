@@ -16,10 +16,11 @@
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
 
         <!-- 配置自定义插件 -->
-        <plugin type="cn.denvie.mybatis.generator.MapperGeneratorPlugin" >
+        <plugin type="cn.denvie.mybatis.generator.MyGeneratorPlugin" >
             <property name="addRemarkComments" value="true"/>
             <property name="dateFormat" value="yyyy/M/dd"/>
-            <property name="author" value="denvie"/>
+            <property name="author" value="Denvie"/>
+            <property name="copyright" value="Copyright © 2020-2020 尛飛俠（Denvie） All rights reserved."/>
         </plugin>
 
         <!-- 配置自定义注释生成器 -->
@@ -29,15 +30,15 @@
             <property name="suppressDate" value="true"/>
             <property name="addRemarkComments" value="true"/>
             <property name="dateFormat" value="yyyy/M/dd"/>
-            <property name="author" value="denvie"/>
+            <property name="author" value="Denvie"/>
             <property name="copyright" value="Copyright © 2020-2020 尛飛俠（Denvie） All rights reserved."/>
         </commentGenerator>
 
         <!-- 配置数据库连接 -->
-        <jdbcConnection driverClass="${driverClass}"
-                        connectionURL="${connectionURL}"
-                        userId="${username}"
-                        password="${password}">
+        <jdbcConnection driverClass="${common.driverClass}"
+                        connectionURL="${common.connectionURL}"
+                        userId="${common.username}"
+                        password="${common.password}">
             <!-- 解决MySQL驱动升级到8.0后不生成指定数据库代码的问题 -->
             <property name="nullCatalogMeansCurrent" value="true" />
             <!-- 解决introspectedTable.getRemarks()为空的问题 -->
@@ -49,24 +50,24 @@
         </javaTypeResolver>
 
         <!-- 配置生成的Model类存放位置 -->
-        <javaModelGenerator targetPackage="cn.denvie.mybatis.app.model" targetProject="mybatis-mbg/src/main/java">
+        <javaModelGenerator targetPackage="cn.denvie.mybatis.app.entity" targetProject="mybatis-generator/src/main/java">
             <property name="enableSubPackages" value="true" />
             <!-- 生成的Model的字符串属性是否先trim()再赋值 -->
             <property name="trimStrings" value="false" />
         </javaModelGenerator>
 
         <!-- 配置生成的映射文件存放位置 -->
-        <sqlMapGenerator targetPackage="mapper"  targetProject="mybatis-mbg/src/main/resources">
+        <sqlMapGenerator targetPackage="mapper" targetProject="mybatis-generator/src/main/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
-        <!--配置生成Dao类策略-->
+        <!--配置生成Mapper类策略-->
         <!--
             type="ANNOTATEDMAPPER"，生成Java Model和基于注解的Mapper对象
             type="MIXEDMAPPER"，生成基于注解的Java Model和相应的Mapper对象
             type="XMLMAPPER"，生成SQLMap XML文件和独立的Mapper接口
         -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.denvie.mybatis.app.mapper" targetProject="mybatis-mbg/src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.denvie.mybatis.app.mapper" targetProject="mybatis-generator/src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 

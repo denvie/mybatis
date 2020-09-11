@@ -10,7 +10,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 /**
  * UserService。
  *
- * @author denvie
+ * @author Denvie
  * @since 2020/9/6
  */
 public interface UserService extends IService<User> {
